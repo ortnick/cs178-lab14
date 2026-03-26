@@ -110,7 +110,7 @@ def price_form():
     GET handler: renders the empty search form.
     The 'fieldname' variable fills in the label text in textbox.html.
     """
-    return render_template('textbox.html', fieldname="Milliseconds")
+    return render_template('textbox.html', fieldname="Price")
 
 @app.route("/pricequerytextbox", methods=['POST'])
 def price_form_post():
