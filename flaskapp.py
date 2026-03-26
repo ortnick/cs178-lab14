@@ -143,20 +143,6 @@ def time_form_post():
     text = request.form['text']
     return viewtime(text)
 
-@app.route("/timequery/<time>")
-def viewtime(time):
-    rows = execute_query("""
-        SELECT ArtistId, Artist.Name, Track.Name, UnitPrice, Milliseconds
-        FROM Artist
-        JOIN Album USING (ArtistID)
-        JOIN Track USING (AlbumID)
-        WHERE Milliseconds > %s
-        ORDER BY Milliseconds DESC
-        LIMIT 500
-    """, (str(time),))
-    return display_html(rows)
-
-
 # ---------------------------------------------------------------------------
 # Run the app
 # ---------------------------------------------------------------------------
